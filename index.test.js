@@ -51,4 +51,19 @@ test("delete db by id", async () => {
     expect(users.length).toEqual(restQuantity) 
     expect(users[0].id).not.toEqual(1) //checking first 1 does not have an id of 1 as should have been deleted. 
 })
+
+test("should return an error if color is empty or has whitespace", async () => {
+    const response = await request(app)
+    .post("/fruits")
+    .send({color: " "})
+    expect(response.body[0]).toHaveProperty("color", "red")
+})
+
+test("should return an error if User name is empty or has whitespace", async () => {
+    const response = await request(app)
+    .post("/users")
+    .send({name: " "})
+    expect(response.body[0]).toHaveProperty("name", "User 1")
+})
+
 })
