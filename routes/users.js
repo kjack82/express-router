@@ -32,7 +32,7 @@ router.get("/:userId", async function (req, res) {
                 name: req.body.name,
                 age: req.body.age,
             })
-                res.send.(user)
+                res.send(user)
         } else {
             res.status(404).send({});
         }
